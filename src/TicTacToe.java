@@ -1,4 +1,8 @@
+import javafx.beans.binding.When;
+import javafx.scene.layout.Background;
+
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -28,36 +32,50 @@ class FrameEx extends JFrame implements ActionListener {
                 values[i][j]=2;
 
         setTitle("Tic Tac Toe");
-        setLayout(new BorderLayout(10,10));
+        setLayout(new BorderLayout(0,0));
+        setBackground(WHITE);
 
         //Labels
         JPanel player = new JPanel();
-        player.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+        player.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
+        player.setBackground(WHITE);
 
-        text1.setBackground(red);
+        text1.setBackground(RED);
         text1.setAlignment(Label.CENTER);
-        text1.setFont(new Font("Arial", Font.BOLD,15));
+        text1.setFont(new Font("Arial", Font.BOLD,18));
         text1.setPreferredSize(new Dimension(100,40));
         player.add(text1);
 
         text2.setForeground(WHITE);
         text2.setAlignment(Label.CENTER);
-        text2.setFont(new Font("Arial", Font.BOLD,15));
+        text2.setFont(new Font("Arial", Font.BOLD,18));
         text2.setPreferredSize(new Dimension(100,40));
         player.add(text2);
 
         //Buttons
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER,0,0));
+        panel.setBackground(WHITE);
+
+        //Reset
+        JPanel resetpanel = new JPanel();
+        resetpanel.setLayout(new FlowLayout(FlowLayout.CENTER,5,5));
+        resetpanel.setBackground(WHITE);
+
+        reset.setPreferredSize(new Dimension(100,40));
+        reset.setBackground(BLUE);
+        reset.setFont(new Font("Arial", Font.BOLD, 20));
+        reset.setForeground(WHITE);
+        resetpanel.add(reset);
 
         //Adding Panels to the Frame
         add(player, BorderLayout.NORTH);
         add(panel, BorderLayout.CENTER);
-        add(reset, BorderLayout.SOUTH);
+        add(resetpanel, BorderLayout.SOUTH);
         for(int i=0;i<3;i++)
             for(int j=0; j<3; j++){
                 box[i][j]=new JButton();
-                box[i][j].setPreferredSize(new Dimension(130,130));
+                box[i][j].setPreferredSize(new Dimension(130,120));
                 box[i][j].setFont(new Font("Times New Roman", Font.PLAIN, 50));
                 box[i][j].addActionListener(this);
                 panel.add(box[i][j]);
